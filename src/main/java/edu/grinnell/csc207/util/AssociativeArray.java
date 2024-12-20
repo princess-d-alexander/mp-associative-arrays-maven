@@ -61,11 +61,20 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
+    // Create a new associative array
     AssociativeArray<K, V> copy = new AssociativeArray<>();
+
+    // Ensure the new array is large enough to hold all elements
+    copy.pairs = java.util.Arrays.copyOf(this.pairs, this.size);
+
+    // Copy all elements from the original array to the new one
     for (int i = 0; i < this.size; i++) {
       copy.pairs[i] = this.pairs[i].clone();
-    } //for
+    } // for
+
+    // Set the size in the new array
     copy.size = this.size;
+
     return copy;
   } // clone()
 
